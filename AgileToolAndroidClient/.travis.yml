@@ -38,8 +38,6 @@ before_script:
 
 script: ./gradlew :app:build
 
-
-
 notifications:
   email:
     recipients:
