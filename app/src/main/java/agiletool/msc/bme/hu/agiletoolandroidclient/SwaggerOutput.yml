@@ -1,0 +1,348 @@
+swagger: '2.0'
+info:
+  description: Description for MSc thesis WRYDX5.
+  version: 1.0.0
+  title: Agile tool android client
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+host: localhost
+basePath: /api
+paths:
+  /:
+    post:
+      tags:
+        - login
+      summary: This path is the request for the login.
+      parameters:
+        - in: body
+          name: body
+          description: User in
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong user creddentials
+  /user:
+    post:
+      tags:
+        - User
+      summary: add user
+      parameters:
+        - in: body
+          name: body
+          description: add user
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong user
+    get:
+      tags:
+        - User
+      summary: Find all user
+      description: Get all user
+      responses:
+        '200':
+          description: successful querri of items
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+    put:
+      tags:
+        - User
+      summary: Update item
+      description: update user
+      parameters:
+        - in: body
+          name: body
+          description: user needed
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong user
+        '401':
+          description: Unauthorized
+  /user/{userId}:
+    delete:
+      tags:
+        - User
+      summary: Delete user
+      description: Delete user
+      parameters:
+        - name: userId
+          in: path
+          description: User id to delete.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong user
+        '401':
+          description: Unauthorized
+  /user/find:
+    post:
+        tags:
+          - User
+        summary: get specific user list
+        parameters:
+          - in: body
+            name: body
+            description: get user list
+            required: true
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/User'
+        responses:
+          '200':
+            description: OK
+          '400':
+            description: Wrong schema
+definitions:
+  Map:
+    type: object
+    properties:
+      Integer:
+        type: integer
+      String:
+        type: string
+  CheckList:
+    type: object
+    properties:
+      done:
+        type: boolean
+      content:
+        type: string
+  String:
+    type: string
+  Role:
+    type: object
+    properties:
+      role:
+        type: string
+  Item:
+    type: object
+    properties:
+      serverId:
+        type: string
+      cost:
+        type: integer
+        format: int32
+      date:
+        type: string
+        format: date-time
+  User:
+    type: object
+    properties:
+      username:
+        type: string
+      password:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      email:
+        type: string
+      roles:
+        type: array
+        items:
+          $ref: '#/definitions/Role'
+      projects:
+        type: array
+        items:
+          $ref: '#/definitions/String'
+  BacklogItem:
+    type: object
+    properties:
+      title:
+        type: string
+      createDate:
+        type: string
+        format: date-time
+      keywords:
+        type: array
+        items:
+          $ref: '#/definitions/String'
+      description:
+        type: string
+      assignee:
+        type: array
+        items:
+          $ref: '#/definitions/String'
+      complexity:
+        type: integer
+      depending:
+        type: array
+        items:
+          $ref: '#/definitions/String'
+      status:
+        type: integer
+      backlogItemType:
+        type: integer
+      checklist:
+        type: array
+        items:
+          $ref: '#/definitions/CheckList'
+  Dashboard:
+    type: object
+    properties:
+      id:
+        type: string
+      backlog:
+        type: array
+        items:
+          $ref: '#/definitions/Map'
+      todo:
+        type: array
+        items:
+          $ref: '#/definitions/Map'
+      inprogress:
+        type: array
+        items:
+          $ref: '#/definitions/Map'
+      done:
+        type: array
+        items:
+          $ref: '#/definitions/Map'
+  Project:
+    type: object
+    properties:
+      id:
+        type: string
+      dashboardID:
+        type: string
+      sprintID:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      usersInProject:
+        type: array
+        items:
+          $ref: '#/definitions/String'
+  Sprint:
+    type: object
+    properties:
+      id:
+        type: string
+      startTime:
+        type: string
+        format: date-time
+      endTime:
+        type: string
+        format: date-time
+      backlogItemsInvolved:
+        type: array
+        items:
+          $ref: '#/definitions/String'
+  Task:
+    type: object
+    properties:
+      title:
+        type: string
+      createDate:
+        type: string
+        format: date-time
+      keywords:
+        type: array
+        items:
+          $ref: '#/definitions/String'
+      description:
+        type: string
+      assignee:
+        type: array
+        items:
+          $ref: '#/definitions/String'
+      complexity:
+        type: integer
+      depending:
+        type: array
+        items:
+          $ref: '#/definitions/String'
+      status:
+        type: integer
+      backlogItemType:
+        type: integer
+      checklist:
+        type: array
+        items:
+          $ref: '#/definitions/CheckList'
+      history:
+        type: array
+        items:
+          $ref: '#/definitions/String'
+      progressInfo:
+        type: array
+        items:
+          $ref: '#/definitions/String'
+  UserStory:
+    type: object
+    properties:
+      title:
+        type: string
+      createDate:
+        type: string
+        format: date-time
+      keywords:
+        type: array
+        items:
+          $ref: '#/definitions/String'
+      description:
+        type: string
+      assignee:
+        type: array
+        items:
+          $ref: '#/definitions/String'
+      complexity:
+        type: integer
+      depending:
+        type: array
+        items:
+          $ref: '#/definitions/String'
+      status:
+        type: integer
+      backlogItemType:
+        type: integer
+      checklist:
+        type: array
+        items:
+          $ref: '#/definitions/CheckList'
+      history:
+        type: array
+        items:
+          $ref: '#/definitions/String'
+      progressInfo:
+        type: array
+        items:
+          $ref: '#/definitions/String'
+      subtask:
+        type: array
+        items:
+          $ref: '#/definitions/String'
+      definitionOfDone:
+        type: array
+        items:
+          $ref: '#/definitions/CheckList'
+      acceptanceCriteria:
+        type: array
+        items:
+          $ref: '#/definitions/CheckList'
