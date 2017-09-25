@@ -1,16 +1,11 @@
-package hu.bme.msc.agiletool.model;
+package agiletool.msc.bme.hu.agiletoolandroidclient.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.springframework.data.annotation.Id;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Dashboard {
 
-    @Id
     private String id;
 
     private Map<Integer, String> backlog;
@@ -111,7 +106,7 @@ public class Dashboard {
         return false;
     }
 
-    @JsonIgnore
+//    @JsonIgnore
     public HashMap<String, Map<Integer, String>> getAllCollectionsFromDashboard(){
         HashMap retVal = new HashMap<Integer, Map<Integer,String>>();
         retVal.put("backlog", this.getBacklog());

@@ -1,7 +1,5 @@
-package hu.bme.msc.agiletool.model;
+package agiletool.msc.bme.hu.agiletoolandroidclient.model;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,12 +32,12 @@ public enum Complexity {
         valueA.put(100, Complexity.HUNDRED);
     }
 
-    @JsonCreator
+//    @JsonCreator
     public static Complexity forValue(Integer value) {
         return valueA.get(value);
     }
 
-    @JsonValue
+//    @JsonValue
     public Integer toValue() {
         for (Map.Entry<Integer, Complexity> entry : valueA.entrySet()) {
             if (entry.getValue() == this)

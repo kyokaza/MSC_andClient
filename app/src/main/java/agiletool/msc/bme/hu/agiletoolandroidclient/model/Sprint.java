@@ -1,15 +1,11 @@
-package hu.bme.msc.agiletool.model;
+package agiletool.msc.bme.hu.agiletoolandroidclient.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.springframework.data.annotation.Id;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Sprint {
-    @Id
     private String id;
 
     private Date startTime;

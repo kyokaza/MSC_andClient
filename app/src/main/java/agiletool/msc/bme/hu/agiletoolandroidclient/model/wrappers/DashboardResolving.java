@@ -1,10 +1,10 @@
-package hu.bme.msc.agiletool.model.wrappers;
+package agiletool.msc.bme.hu.agiletoolandroidclient.model.wrappers;
 
-import hu.bme.msc.agiletool.model.BacklogItem;
-import hu.bme.msc.agiletool.model.Sprint;
 
 import java.util.ArrayList;
-import java.util.List;
+
+import agiletool.msc.bme.hu.agiletoolandroidclient.model.BacklogItem;
+import agiletool.msc.bme.hu.agiletoolandroidclient.model.Sprint;
 
 public class DashboardResolving {
 

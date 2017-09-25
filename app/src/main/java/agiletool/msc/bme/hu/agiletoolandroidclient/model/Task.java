@@ -1,6 +1,5 @@
-package hu.bme.msc.agiletool.model;
+package agiletool.msc.bme.hu.agiletoolandroidclient.model;
 
-import hu.bme.msc.agiletool.model.wrappers.CheckList;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,13 +11,6 @@ public class Task extends AbstractTask{
 
     public Task() {
     }
-
-//    public Task(String id, String title, Date createDate, ArrayList<String> keywords, String description, ArrayList<String> assignee, Complexity complexity, ArrayList<String> depending, BacklogStatus status, ArrayList<String> history, ArrayList<String> progressInfo) {
-//        super(id, title, createDate, keywords, description, assignee, complexity, depending, status, BacklogItemType.TASK);
-//        this.history = history;
-//        this.progressInfo = progressInfo;
-//    }
-
 
     public Task(String id, String title, Date createDate, ArrayList<String> keywords, String description, ArrayList<String> assignee, Complexity complexity, ArrayList<String> depending, BacklogStatus status, List<CheckList> checkList, ArrayList<String> history, ArrayList<String> progressInfo) {
         super(id, title, createDate, keywords, description, assignee, complexity, depending, status, BacklogItemType.TASK, checkList);

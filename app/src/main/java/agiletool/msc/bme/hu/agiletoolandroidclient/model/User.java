@@ -1,29 +1,21 @@
-package hu.bme.msc.agiletool.model;
+package agiletool.msc.bme.hu.agiletoolandroidclient.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class User {
 
-    @Id
     private String id;
 
     private String firstName;
     private String lastName;
-    @Indexed(unique = true)
     private String username;
     private String email;
 
-    @JsonIgnore
     private String password;
 
-    private List<GrantedAuthority> roles;
+    private List<String> roles;
     private List<String> projects;
 
     public User() {
@@ -31,7 +23,7 @@ public class User {
         projects = new ArrayList<>();
     }
 
-    public User(String firstName, String lastName, String username, String email, String password, List<GrantedAuthority> roles, List<String> projects) {
+    public User(String firstName, String lastName, String username, String email, String password, List<String> roles, List<String> projects) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -89,11 +81,11 @@ public class User {
         this.password = password;
     }
 
-    public List<GrantedAuthority> getRoles() {
+    public List<String> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<GrantedAuthority> roles) {
+    public void setRoles(List<String> roles) {
         this.roles = roles;
     }
 
@@ -111,7 +103,7 @@ public class User {
 
     public void addRole(String... roles) {
         for(String role : roles) {
-            this.roles.add(new SimpleGrantedAuthority(role));
+            this.roles.add(role);
         }
     }
 

@@ -1,18 +1,13 @@
-package hu.bme.msc.agiletool.model;
+package agiletool.msc.bme.hu.agiletoolandroidclient.model;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import hu.bme.msc.agiletool.model.wrappers.CheckList;
-import org.springframework.data.annotation.Id;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class BacklogItem {
 
-    @Id
     private String id;
 
     private String                title;

@@ -1,6 +1,5 @@
-package hu.bme.msc.agiletool.model;
+package agiletool.msc.bme.hu.agiletoolandroidclient.model;
 
-import hu.bme.msc.agiletool.model.wrappers.CheckList;
 
 import java.util.ArrayList;
 import java.util.Date;

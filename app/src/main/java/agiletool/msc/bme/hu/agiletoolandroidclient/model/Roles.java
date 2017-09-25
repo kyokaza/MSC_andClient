@@ -1,4 +1,4 @@
-package hu.bme.msc.agiletool.model;
+package agiletool.msc.bme.hu.agiletoolandroidclient.model;
 
 public enum Roles {
     USER ("USER"),

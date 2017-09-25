@@ -1,4 +1,4 @@
-package hu.bme.msc.agiletool.model.wrappers;
+package agiletool.msc.bme.hu.agiletoolandroidclient.model;
 
 public class CheckList {
     private boolean done;

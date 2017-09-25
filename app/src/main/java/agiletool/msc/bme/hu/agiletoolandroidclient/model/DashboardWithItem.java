@@ -1,6 +1,5 @@
-package hu.bme.msc.agiletool.model.wrappers;
+package agiletool.msc.bme.hu.agiletoolandroidclient.model;
 
-import hu.bme.msc.agiletool.model.Dashboard;
 
 public class DashboardWithItem {
     private Dashboard dashboard;

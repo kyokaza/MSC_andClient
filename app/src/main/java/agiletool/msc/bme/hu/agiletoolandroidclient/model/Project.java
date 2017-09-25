@@ -1,14 +1,10 @@
-package hu.bme.msc.agiletool.model;
+package agiletool.msc.bme.hu.agiletoolandroidclient.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.springframework.data.annotation.Id;
 
 import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Project {
 
-    @Id
     private String id;
 
     private String dashboardId;

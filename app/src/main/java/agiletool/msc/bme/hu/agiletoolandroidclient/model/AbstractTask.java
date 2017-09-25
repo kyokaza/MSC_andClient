@@ -1,13 +1,9 @@
-package hu.bme.msc.agiletool.model;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import hu.bme.msc.agiletool.model.wrappers.CheckList;
+package agiletool.msc.bme.hu.agiletoolandroidclient.model;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class AbstractTask extends BacklogItem {
 
     public AbstractTask() {
