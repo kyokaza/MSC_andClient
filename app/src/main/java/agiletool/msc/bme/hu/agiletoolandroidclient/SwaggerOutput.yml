@@ -392,6 +392,56 @@ paths:
             description: OK
           '400':
             description: Wrong schema
+  /dashboard/{dashboardId}/add:
+    post:
+      tags:
+        - dashboard
+      summary: add item to  dashboard
+      description: add item to dashboard
+      parameters:
+        - name: dashboardId
+          in: path
+          description: dashboard id to add.
+          required: true
+          type: string
+        - name: backlogItem
+          in: body
+          description: backlogItem in to add to dashboard.
+          required: true
+          schema:
+            $ref: '#/definitions/BacklogItem'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong dashboard
+        '401':
+          description: Unauthorized
+  /dashboard/{dashboardId}/dnd:
+    post:
+      tags:
+        - dashboard
+      summary: update dashboard after drag n drop
+      description: update dashboard after drag n drop
+      parameters:
+        - name: dashboardId
+          in: path
+          description: dashboard id to delete.
+          required: true
+          type: string
+        - name: dashboard
+          in: body
+          description: dashboard to be updated.
+          required: true
+          schema:
+            $ref: '#/definitions/Dashboard'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong dashboard
+        '401':
+          description: Unauthorized
 
   /project:
     post:
@@ -460,6 +510,56 @@ paths:
           description: Wrong project
         '401':
           description: Unauthorized
+  /project/{projectId}/remove:
+    delete:
+      tags:
+        - project
+      summary: Delete user from project, an updating the user repo
+      description: Delete user from project, an updating the user repo
+      parameters:
+        - name: projectId
+          in: path
+          description: project id.
+          required: true
+          type: string
+        - name: sprint
+          in: body
+          description: userID that needs the project to be removed from.
+          required: true
+          schema:
+            $ref: '#/definitions/String'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong project
+        '401':
+          description: Unauthorized
+  /project/{projectId}/sprint:
+    post:
+      tags:
+        - project
+      summary: adding Sprint To Project By Updating Project
+      description: adding Sprint To Project By Updating Project
+      parameters:
+        - name: projectId
+          in: path
+          description: project id.
+          required: true
+          type: string
+        - name: sprint
+          in: body
+          description: sprint for project to be updated.
+          required: true
+          schema:
+            $ref: '#/definitions/Sprint'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong dashboardId
+        '401':
+          description: Unauthorized
   /project/find:
     post:
         tags:
@@ -479,6 +579,44 @@ paths:
             description: OK
           '400':
             description: Wrong schema
+  /project/{projectId}/dashboard:
+    get:
+      tags:
+        - project
+      summary: get the dashboard of a project
+      description: get the dashboard of a project
+      parameters:
+        - name: projectId
+          in: path
+          description: project id to get the dashboard for.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong project
+        '401':
+          description: Unauthorized
+  /project/resolve/{projectId}:
+    get:
+      tags:
+        - project
+      summary: get the fully populated dashboard of a project
+      description: get the fully populated dashboard of a project
+      parameters:
+        - name: projectId
+          in: path
+          description: project id to get the dashboard for.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong project
+        '401':
+          description: Unauthorized
   /project/findByNameContains:
     post:
         tags:
