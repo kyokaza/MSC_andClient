@@ -15,7 +15,7 @@ paths:
   /:
     post:
       tags:
-        - login
+        - Login
       summary: This path is the request for the login.
       parameters:
         - in: body
@@ -110,6 +110,614 @@ paths:
               type: array
               items:
                 $ref: '#/definitions/User'
+        responses:
+          '200':
+            description: OK
+          '400':
+            description: Wrong schema
+  /bug:
+    post:
+      tags:
+        - Bug
+      summary: add Bug
+      parameters:
+        - in: body
+          name: body
+          description: add Bug
+          required: true
+          schema:
+            $ref: '#/definitions/Bug'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong Bug
+    get:
+      tags:
+        - Bug
+      summary: Find all Bug
+      description: Get all Bug
+      responses:
+        '200':
+          description: successful querri of Bugs
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Bug'
+    put:
+      tags:
+        - Bug
+      summary: Update Bug
+      description: update Bug
+      parameters:
+        - in: body
+          name: body
+          description: Bug needed
+          required: true
+          schema:
+            $ref: '#/definitions/Bug'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong user
+        '401':
+          description: Unauthorized
+  /bug/{bugId}:
+    delete:
+      tags:
+        - Bug
+      summary: Delete Bug
+      description: Delete Bug
+      parameters:
+        - name: bugId
+          in: path
+          description: Bug id to delete.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong Bug
+        '401':
+          description: Unauthorized
+  /bug/find:
+    post:
+        tags:
+          - Bug
+        summary: get specific Bug list
+        parameters:
+          - in: body
+            name: body
+            description: get Bug list
+            required: true
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/Bug'
+        responses:
+          '200':
+            description: OK
+          '400':
+            description: Wrong schema
+
+  /dashboard:
+    post:
+      tags:
+        - dashboard
+      summary: add dashboard
+      parameters:
+        - in: body
+          name: body
+          description: add dashboard
+          required: true
+          schema:
+            $ref: '#/definitions/Dashboard'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong dashboard
+    get:
+      tags:
+        - dashboard
+      summary: Find all dashboard
+      description: Get all dashboard
+      responses:
+        '200':
+          description: successful querri of dashboard
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Dashboard'
+    put:
+      tags:
+        - dashboard
+      summary: Update dashboard
+      description: update dashboard
+      parameters:
+        - in: body
+          name: body
+          description: dashboard needed
+          required: true
+          schema:
+            $ref: '#/definitions/Dashboard'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong dashboard
+        '401':
+          description: Unauthorized
+  /dashboard/{dashboardId}:
+    delete:
+      tags:
+        - dashboard
+      summary: Delete dashboard
+      description: Delete dashboard
+      parameters:
+        - name: dashboardId
+          in: path
+          description: dashboard id to delete.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong dashboard
+        '401':
+          description: Unauthorized
+  /dashboard/find:
+    post:
+        tags:
+          - dashboard
+        summary: get specific dashboard list
+        parameters:
+          - in: body
+            name: body
+            description: get dashboard list
+            required: true
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/Dashboard'
+        responses:
+          '200':
+            description: OK
+          '400':
+            description: Wrong schema
+
+  /project:
+    post:
+      tags:
+        - project
+      summary: add project
+      parameters:
+        - in: body
+          name: body
+          description: add project
+          required: true
+          schema:
+            $ref: '#/definitions/Project'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong project
+    get:
+      tags:
+        - project
+      summary: Find all project
+      description: Get all project
+      responses:
+        '200':
+          description: successful querri of project
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Project'
+    put:
+      tags:
+        - project
+      summary: Update project
+      description: update project
+      parameters:
+        - in: body
+          name: body
+          description: project needed
+          required: true
+          schema:
+            $ref: '#/definitions/Project'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong project
+        '401':
+          description: Unauthorized
+  /project/{projectId}:
+    delete:
+      tags:
+        - project
+      summary: Delete project
+      description: Delete project
+      parameters:
+        - name: projectId
+          in: path
+          description: project id to delete.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong project
+        '401':
+          description: Unauthorized
+  /project/find:
+    post:
+        tags:
+          - project
+        summary: get specific project list
+        parameters:
+          - in: body
+            name: body
+            description: get project list
+            required: true
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/Project'
+        responses:
+          '200':
+            description: OK
+          '400':
+            description: Wrong schema
+
+  /sprint:
+    post:
+      tags:
+        - sprint
+      summary: add sprint
+      parameters:
+        - in: body
+          name: body
+          description: add sprint
+          required: true
+          schema:
+            $ref: '#/definitions/Sprint'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong sprint
+    get:
+      tags:
+        - sprint
+      summary: Find all sprint
+      description: Get all sprint
+      responses:
+        '200':
+          description: successful querri of sprint
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Sprint'
+    put:
+      tags:
+        - sprint
+      summary: Update sprint
+      description: update sprint
+      parameters:
+        - in: body
+          name: body
+          description: sprint needed
+          required: true
+          schema:
+            $ref: '#/definitions/Sprint'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong sprint
+        '401':
+          description: Unauthorized
+  /sprint/{sprintId}:
+    delete:
+      tags:
+        - sprint
+      summary: Delete sprint
+      description: Delete sprint
+      parameters:
+        - name: sprintId
+          in: path
+          description: sprint id to delete.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong sprint
+        '401':
+          description: Unauthorized
+  /sprint/find:
+    post:
+        tags:
+          - sprint
+        summary: get specific sprint list
+        parameters:
+          - in: body
+            name: body
+            description: get sprint list
+            required: true
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/Sprint'
+        responses:
+          '200':
+            description: OK
+          '400':
+            description: Wrong schema
+
+  /task:
+    post:
+      tags:
+        - task
+      summary: add task
+      parameters:
+        - in: body
+          name: body
+          description: add task
+          required: true
+          schema:
+            $ref: '#/definitions/Task'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong task
+    get:
+      tags:
+        - task
+      summary: Find all task
+      description: Get all task
+      responses:
+        '200':
+          description: successful querri of task
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Task'
+    put:
+      tags:
+        - task
+      summary: Update task
+      description: update task
+      parameters:
+        - in: body
+          name: body
+          description: task needed
+          required: true
+          schema:
+            $ref: '#/definitions/Task'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong task
+        '401':
+          description: Unauthorized
+  /task/{taskId}:
+    delete:
+      tags:
+        - task
+      summary: Delete task
+      description: Delete task
+      parameters:
+        - name: taskId
+          in: path
+          description: task id to delete.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong task
+        '401':
+          description: Unauthorized
+  /task/find:
+    post:
+        tags:
+          - task
+        summary: get specific task list
+        parameters:
+          - in: body
+            name: body
+            description: get task list
+            required: true
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/Task'
+        responses:
+          '200':
+            description: OK
+          '400':
+            description: Wrong schema
+
+  /backlogitem:
+    post:
+      tags:
+        - backlogitem
+      summary: add backlogitem
+      parameters:
+        - in: body
+          name: body
+          description: add backlogitem
+          required: true
+          schema:
+            $ref: '#/definitions/BacklogItem'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong backlogitem
+    get:
+      tags:
+        - backlogitem
+      summary: Find all backlogitem
+      description: Get all backlogitem
+      responses:
+        '200':
+          description: successful querri of backlogitem
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/BacklogItem'
+    put:
+      tags:
+        - backlogitem
+      summary: Update backlogitem
+      description: update backlogitem
+      parameters:
+        - in: body
+          name: body
+          description: backlogitem needed
+          required: true
+          schema:
+            $ref: '#/definitions/BacklogItem'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong backlogitem
+        '401':
+          description: Unauthorized
+  /backlogitem/{backlogitemId}:
+    delete:
+      tags:
+        - backlogitem
+      summary: Delete backlogitem
+      description: Delete backlogitem
+      parameters:
+        - name: backlogitemId
+          in: path
+          description: backlogitem id to delete.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong backlogitem
+        '401':
+          description: Unauthorized
+  /backlogitem/find:
+    post:
+        tags:
+          - backlogitem
+        summary: get specific backlogitem list
+        parameters:
+          - in: body
+            name: body
+            description: get backlogitem list
+            required: true
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/BacklogItem'
+        responses:
+          '200':
+            description: OK
+          '400':
+            description: Wrong schema
+
+  /userstory:
+    post:
+      tags:
+        - userstory
+      summary: add userstory
+      parameters:
+        - in: body
+          name: body
+          description: add userstory
+          required: true
+          schema:
+            $ref: '#/definitions/UserStory'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong userstory
+    get:
+      tags:
+        - userstory
+      summary: Find all userstory
+      description: Get all userstory
+      responses:
+        '200':
+          description: successful querri of userstory
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserStory'
+    put:
+      tags:
+        - userstory
+      summary: Update userstory
+      description: update userstory
+      parameters:
+        - in: body
+          name: body
+          description: userstory needed
+          required: true
+          schema:
+            $ref: '#/definitions/UserStory'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong userstory
+        '401':
+          description: Unauthorized
+  /userstory/{userstoryId}:
+    delete:
+      tags:
+        - userstory
+      summary: Delete userstory
+      description: Delete userstory
+      parameters:
+        - name: userstoryId
+          in: path
+          description: userstory id to delete.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong userstory
+        '401':
+          description: Unauthorized
+  /userstory/find:
+    post:
+        tags:
+          - userstory
+        summary: get specific userstory list
+        parameters:
+          - in: body
+            name: body
+            description: get userstory list
+            required: true
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/UserStory'
         responses:
           '200':
             description: OK
@@ -343,6 +951,38 @@ definitions:
         items:
           $ref: '#/definitions/CheckList'
       acceptanceCriteria:
+        type: array
+        items:
+          $ref: '#/definitions/CheckList'
+  Bug:
+    type: object
+    properties:
+      title:
+        type: string
+      createDate:
+        type: string
+        format: date-time
+      keywords:
+        type: array
+        items:
+          $ref: '#/definitions/String'
+      description:
+        type: string
+      assignee:
+        type: array
+        items:
+          $ref: '#/definitions/String'
+      complexity:
+        type: integer
+      depending:
+        type: array
+        items:
+          $ref: '#/definitions/String'
+      status:
+        type: integer
+      backlogItemType:
+        type: integer
+      checklist:
         type: array
         items:
           $ref: '#/definitions/CheckList'
