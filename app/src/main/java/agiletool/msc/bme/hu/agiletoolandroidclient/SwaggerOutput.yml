@@ -115,6 +115,110 @@ paths:
             description: OK
           '400':
             description: Wrong schema
+
+  /user/findByFirstname:
+    post:
+        tags:
+          - User
+        summary: get specific user list
+        parameters:
+          - in: body
+            name: body
+            description: get user list
+            required: true
+            schema:
+              type: string
+        responses:
+          '200':
+            description: OK
+          '400':
+            description: Wrong schema
+  /user/findByLastname:
+    post:
+        tags:
+          - User
+        summary: get specific user list
+        parameters:
+          - in: body
+            name: body
+            description: get user list
+            required: true
+            schema:
+              type: string
+        responses:
+          '200':
+            description: OK
+          '400':
+            description: Wrong schema
+  /user/findByUsername:
+    post:
+        tags:
+          - User
+        summary: get specific user list
+        parameters:
+          - in: body
+            name: body
+            description: get user list
+            required: true
+            schema:
+              type: string
+        responses:
+          '200':
+            description: OK
+          '400':
+            description: Wrong schema
+  /user/findByUsernameContains:
+    post:
+        tags:
+          - User
+        summary: get specific user list
+        parameters:
+          - in: body
+            name: body
+            description: get user list
+            required: true
+            schema:
+              type: string
+        responses:
+          '200':
+            description: OK
+          '400':
+            description: Wrong schema
+  /user/findByFirstnameorLastname:
+    post:
+        tags:
+          - User
+        summary: get specific user list
+        parameters:
+          - in: body
+            name: body
+            description: get user list
+            required: true
+            schema:
+              type: string
+        responses:
+          '200':
+            description: OK
+          '400':
+            description: Wrong schema
+  /user/findByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase:
+    post:
+        tags:
+          - User
+        summary: get specific user list
+        parameters:
+          - in: body
+            name: body
+            description: get user list
+            required: true
+            schema:
+              type: string
+        responses:
+          '200':
+            description: OK
+          '400':
+            description: Wrong schema
+
   /bug:
     post:
       tags:
@@ -370,6 +474,25 @@ paths:
               type: array
               items:
                 $ref: '#/definitions/Project'
+        responses:
+          '200':
+            description: OK
+          '400':
+            description: Wrong schema
+  /project/findByNameContains:
+    post:
+        tags:
+          - project
+        summary: get specific project list
+        parameters:
+          - in: body
+            name: body
+            description: get project list
+            required: true
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/String'
         responses:
           '200':
             description: OK
