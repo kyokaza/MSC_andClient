@@ -1,5 +1,6 @@
 package agiletool.msc.bme.hu.agiletoolandroidclient.ui.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -17,6 +18,7 @@ import javax.inject.Inject;
 
 import agiletool.msc.bme.hu.agiletoolandroidclient.AgileToolApplication;
 import agiletool.msc.bme.hu.agiletoolandroidclient.R;
+import agiletool.msc.bme.hu.agiletoolandroidclient.ui.main.MainActivity;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import retrofit2.http.HTTP;
@@ -46,7 +48,7 @@ public class LoginActivity extends AppCompatActivity implements LoginScreen  {
     @Override
     protected void onStop() {
         super.onStop();
-        loginPresenter.detachScreen();
+//        loginPresenter.detachScreen();
     }
 
     @Override
@@ -56,13 +58,27 @@ public class LoginActivity extends AppCompatActivity implements LoginScreen  {
 //        finish();
     }
 
+    /**
+     * Finding it with butterknife.
+     * */
     @OnClick(R.id.login_button)
-    public void loginButton(Button button) {
+    public void loginButtonOnClock(Button button) {
         EditText m_et_user = (EditText)findViewById(R.id.login_username);
         EditText m_et_pass = (EditText)findViewById(R.id.login_password);
         Toast.makeText(this, "XXXXXXXXXX " + m_et_user.getText() + "-" + m_et_pass.getText(), Toast.LENGTH_LONG).show();
 
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
+//        finish();
+    }
 
+    @Override
+    public void onBackPressed() {
+        //Close the application
+        Intent a = new Intent(Intent.ACTION_MAIN);
+        a.addCategory(Intent.CATEGORY_HOME);
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(a);
     }
 
 
