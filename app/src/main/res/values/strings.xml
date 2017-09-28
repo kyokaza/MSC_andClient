@@ -3,4 +3,7 @@
     <string name="login_hint_username">USERNAME</string>
     <string name="login_hint_password">PASSWORD</string>
     <string name="login_button_login">LOGIN</string>
+    <string name="project_name">Project Name</string>
+    <string name="project_description">Project description</string>
+    <string name="go_to_processlist">go to processlist</string>
 </resources>
