@@ -1,7 +1,5 @@
 package agiletool.msc.bme.hu.agiletoolandroidclient.model;
 
-
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,18 +8,19 @@ public abstract class BacklogItem {
 
     private String id;
 
-    private String                title;
-    private Date                  createDate;
-    private ArrayList<String>     keywords;
-    private String                description;
-    private ArrayList<String>     assignee;
-    private Complexity            complexity;
-    private ArrayList<String>     depending;
-    private BacklogStatus         status;
-    private BacklogItemType       type;
-    private List<CheckList>       checkList;
+    private String title;
+    private Date createDate;
+    private ArrayList<String> keywords;
+    private String description;
+    private ArrayList<String> assignee;
+    private Complexity complexity;
+    private ArrayList<String> depending;
+    private BacklogStatus status;
+    private BacklogItemType type;
+    private List<CheckList> checkList;
 
-    public BacklogItem() { }
+    public BacklogItem() {
+    }
 
     public BacklogItem(String id, String title, Date createDate, ArrayList<String> keywords, String description, ArrayList<String> assignee, Complexity complexity, ArrayList<String> depending, BacklogStatus status, BacklogItemType type, List<CheckList> checkList) {
         this.id = id;

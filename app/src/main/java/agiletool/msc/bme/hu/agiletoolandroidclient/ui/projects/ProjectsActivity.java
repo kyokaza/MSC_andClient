@@ -1,54 +1,68 @@
 package agiletool.msc.bme.hu.agiletoolandroidclient.ui.projects;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
-import java.util.ArrayList;
+import java.util.List;
 
+import javax.inject.Inject;
+
+import agiletool.msc.bme.hu.agiletoolandroidclient.AgileToolApplication;
 import agiletool.msc.bme.hu.agiletoolandroidclient.R;
+import agiletool.msc.bme.hu.agiletoolandroidclient.model.Project;
+import agiletool.msc.bme.hu.agiletoolandroidclient.ui.dashboard.DashboardActivity;
+import agiletool.msc.bme.hu.agiletoolandroidclient.ui.projects.adapter.ProjectsAdapter;
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
-public class ProjectsActivity extends AppCompatActivity {
+import static agiletool.msc.bme.hu.agiletoolandroidclient.ui.dashboard.DashboardActivity.PROJECT_ID_KEY;
+
+
+public class ProjectsActivity extends AppCompatActivity implements ProjectsScreen {
+
+    @Inject
+    ProjectsPresenter projectsPresenter;
+
+    @Bind(R.id.projects_list)
+    RecyclerView projectRecyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_projects);
+        ButterKnife.bind(this);
 
-        final ListView listview = (ListView) findViewById(R.id.listview_projects);
-        String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
-                "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-                "Linux", "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux",
-                "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux", "OS/2",
-                "Android", "iPhone", "WindowsMobile" };
+        AgileToolApplication.agileToolApplicationComponent.inject(this);
 
-        final ArrayList<String> list = new ArrayList<String>();
-        for (int i = 0; i < values.length; ++i) {
-            list.add(values[i]);
-        }
-        final StableArrayAdapter adapter = new StableArrayAdapter(this,
-                android.R.layout.simple_list_item_1, list);
-        listview.setAdapter(adapter);
-
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, final View view,
-                                    int position, long id) {
-                final String item = (String) parent.getItemAtPosition(position);
-                view.animate().setDuration(2000).alpha(0)
-                        .withEndAction(new Runnable() {
-                            @Override
-                            public void run() {
-                                list.remove(item);
-                                adapter.notifyDataSetChanged();
-                                view.setAlpha(1);
-                            }
-                        });
-            }
-
-        });
+        projectsPresenter.attach(this);
+        projectsPresenter.getProjects();
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        projectsPresenter.detach();
+    }
+
+    @Override
+    public void setProjects(List<Project> projects) {
+        ProjectsAdapter projectsAdapter = new ProjectsAdapter(projects);
+        projectsAdapter.setOnProjectClickListener(this::navigateToDashboard);
+
+        projectRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+        projectRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        projectRecyclerView.setAdapter(projectsAdapter);
+    }
+
+    private void navigateToDashboard(String projectId) {
+        Intent dashboardIntent = new Intent(this, DashboardActivity.class);
+        dashboardIntent.putExtra(PROJECT_ID_KEY, projectId);
+
+        startActivity(dashboardIntent);
+    }
 }

@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 25
@@ -20,6 +21,11 @@ android {
     lintOptions {
         abortOnError false
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -27,7 +33,6 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     compile 'javax.inject:javax.inject:1'
@@ -47,7 +52,7 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta3'
     compile 'com.squareup.okhttp3:okhttp:3.0.1'
     compile 'com.squareup.okhttp3:logging-interceptor:3.0.1'
-    compile 'com.google.code.gson:gson:2.4'
+    compile 'com.google.code.gson:gson:2.8.2'
 
     //JVM Test
     //JUnit
@@ -61,7 +66,26 @@ dependencies {
 
 
     //Mockito
-    testCompile "org.mockito:mockito-core:1.10.19"
-
+    
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'javax.inject:javax.inject:1'
+    compile 'com.google.dagger:dagger-compiler:2.0.1'
+    compile 'com.google.dagger:dagger:2.0.1'
+    compile 'com.github.satyan:sugar:1.4'
+    compile 'de.greenrobot:eventbus:2.4.0'
+    compile 'com.squareup.retrofit2:retrofit:2.0.0-beta3'
+    compile 'com.squareup.okhttp3:okhttp:3.0.1'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.0.1'
+    compile 'io.reactivex:rxandroid:1.2.0'
+    compile 'io.reactivex:rxjava:1.1.4'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
     compile 'com.jakewharton:butterknife:7.0.1'
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-core:1.10.19'
+    provided 'javax.annotation:jsr250-api:1.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+    compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.robertlevonyan.view:MaterialChipView:1.0.0'
 }

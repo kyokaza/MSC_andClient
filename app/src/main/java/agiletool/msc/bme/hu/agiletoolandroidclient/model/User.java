@@ -15,7 +15,7 @@ public class User {
 
     private String password;
 
-    private List<String> roles;
+    private List<Role> roles;
     private List<String> projects;
 
     public User() {
@@ -23,7 +23,7 @@ public class User {
         projects = new ArrayList<>();
     }
 
-    public User(String firstName, String lastName, String username, String email, String password, List<String> roles, List<String> projects) {
+    public User(String firstName, String lastName, String username, String email, String password, List<Role> roles, List<String> projects) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -81,15 +81,15 @@ public class User {
         this.password = password;
     }
 
-    public List<String> getRoles() {
+    public List<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<String> roles) {
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
 
-    public String getFullName(){
+    public String getFullName() {
         return getFirstName() + " " + getLastName();
     }
 
@@ -99,12 +99,6 @@ public class User {
 
     public void setProjects(List<String> projects) {
         this.projects = projects;
-    }
-
-    public void addRole(String... roles) {
-        for(String role : roles) {
-            this.roles.add(role);
-        }
     }
 
     @Override

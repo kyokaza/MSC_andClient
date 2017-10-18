@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?android:attr/listPreferredItemHeight"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/backlog_list_item_type"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/backlog_item_type_background"
+        android:rotation="90"
+        android:textColor="@android:color/white"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/backlog_list_item_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/backlog_list_item_sprint_status"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/backlog_item_type_background"
+        android:rotation="90"
+        android:text="Sprint"
+        android:textColor="@android:color/white"
+        android:textSize="11sp"
+        android:visibility="gone" />
+
+</LinearLayout>
